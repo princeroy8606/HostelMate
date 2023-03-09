@@ -1,8 +1,9 @@
+
 const express = require("express");
 const mongoose= require("mongoose");
 require('dotenv').config();
+const hostelRouter = require("./routers/hostel")
 const app = express();
-app.use(express.json({limit:"40mb", extended:true}))
 
 app.get("/",(req,res)=>{
     res.send("The hostel management app api");
@@ -15,3 +16,12 @@ mongoose.connect(process.env.CONNECTION_URL)
         console.log("got it")
      })
 })
+.catch((err)=>{
+    console.log(err)
+})
+
+app.use(express.json({limit:"40mb", extended:true}))
+
+
+app.use("/hostel",hostelRouter)
+
