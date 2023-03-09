@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose= require("mongoose");
+require('dotenv').config();
 const app = express();
 app.use(express.json({limit:"40mb", extended:true}))
 
@@ -7,11 +8,10 @@ app.get("/",(req,res)=>{
     res.send("The hostel management app api");
 });
 
-const CONNECTION_URL="mongodb+srv://princeroy8606:hostelmanagement116@cluster0.xdbj8ps.mongodb.net/?retryWrites=true&w=majority"
 
-mongoose.connect(CONNECTION_URL)
+mongoose.connect(process.env.CONNECTION_URL)
 .then(()=>{
     app.listen(3000,()=>{
-        console.log("Hello world")
+        console.log("got it")
      })
 })
