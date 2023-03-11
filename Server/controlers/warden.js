@@ -15,7 +15,8 @@ exports.getAllWardens=async(req,res)=>{
 //add warden 
 
 exports.addWarden = async(req,res)=>{
-    const hostel = await Hostel.findOne({hostelId:"45453"})
+    const hostelId= req.body.hostelId
+    const hostel = await Hostel.findOne({hostelId:hostelId})
     try{
         const warden = new Warden({
             wardenName:req.body.wardenName,

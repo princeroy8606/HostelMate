@@ -5,8 +5,10 @@ const Warden = require('../models/warden')
 exports.getHostel = async (req,res)=>{
     const hostelId=req.params.id
     try{
-        const hostel= await Hostel.findOne({hostelId:hostelId});
-        
+        const hostel = await (await Hostel.findOne({ hostelId: hostelId })).populate({path:'wardens',options:{limit:2}});
+        hostel.wardens.forEach((warden)=>{
+            console.log(warden.wardenName)
+        })
         res.status(200).json(hostel);
     }catch(err){
         res.status(404).json({message:"error"})
@@ -23,7 +25,7 @@ exports.geAlltHostel = async (req,res)=>{
 };
 //add new hostel
 exports.addHostel = async(req,res)=>{
-   const {hostelId} = req.body
+    const {hostelId} = req.body
     const existingHostel = await Hostel.findOne({hostelId:hostelId})
     if (!existingHostel){
         try{

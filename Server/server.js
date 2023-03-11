@@ -4,6 +4,7 @@ const mongoose= require("mongoose");
 require('dotenv').config();
 const hostelRouter = require("./routers/hostel")
 const wardenRouter = require("./routers/warden")
+const roomsRouter = require('./routers/rooms')
 const app = express();
 
 app.get("/",(req,res)=>{
@@ -25,4 +26,5 @@ app.use(express.json({limit:"40mb", extended:true}))
 // 
 app.use("/hostel",hostelRouter)
 app.use("/warden",wardenRouter)
+app.use("/rooms",roomsRouter)
 
