@@ -6,6 +6,7 @@ exports.getHostel = async (req,res)=>{
     const hostelId=req.params.id
     try{
         const hostel= await Hostel.findOne({hostelId:hostelId});
+        
         res.status(200).json(hostel);
     }catch(err){
         res.status(404).json({message:"error"})
