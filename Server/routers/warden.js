@@ -4,7 +4,8 @@ const router =  express.Router();
 const Warden = require('../controlers/warden')
 
 
-router.get('/',Warden.getAllWardens)
+router.get('/:id',Warden.getAllWardens)
 router.post('/', Warden.addWarden)
+router.delete('/:id',Warden.deleteWarden)
 
 module.exports=router;
