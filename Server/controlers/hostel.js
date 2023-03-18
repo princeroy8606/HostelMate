@@ -30,6 +30,7 @@ exports.addHostel = async(req,res)=>{
             const hostel = new Hostel({
                 hostelName:req.body.hostelName,
                 hostelId:req.body.hostelId,
+                hostelAddress:req.body.hostelAddress
                 });
                 await hostel.save();
                 res.json(hostel)

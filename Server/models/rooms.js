@@ -5,7 +5,7 @@ const roomSchema = new mongoose.Schema({
     roomType:{type:String,required:true},
     students:[{type:mongoose.Schema.Types.ObjectId,ref:"Students"}],
     services:[{type:mongoose.Schema.Types.ObjectId,ref:"Services"}],
-    maintanances:[{type:mongoose.Schema.Types.ObjectId,ref:"Maintaances"}]
+    maintenances:[{type:mongoose.Schema.Types.ObjectId,ref:"Maintenances"}] 
 })
 
 const Rooms = mongoose.model("Rooms",roomSchema);

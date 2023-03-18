@@ -14,4 +14,4 @@ const wardenSchema= new mongoose.Schema({
     raitings:[{type:mongoose.Schema.Types.ObjectId,ref:"Raitings"}],
 })
 const Wardens = mongoose.model("Wardens",wardenSchema)
-module.exports = Wardens
+module.exports = Wardens 

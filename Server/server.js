@@ -9,6 +9,12 @@ const roomsRouter = require('./routers/rooms')
 const studentsRouter = require('./routers/students')
 const announcementsRouter = require('./routers/announcements')
 const outpassRouter = require('./routers/outpass')
+const leavesRouter = require('./routers/leave')
+const menuRouter = require('./routers/menu')
+const feadbackRouter = require('./routers/feadback')
+const complaintRouter = require('./routers/complaints')
+const serviceRouter = require('./routers/services')
+const maintananceRouter = require('./routers/maintenance')
 
 const app = express();
 
@@ -26,8 +32,7 @@ mongoose.connect(process.env.CONNECTION_URL)
 .catch((err)=>{
     console.log(err)
 })
-
-app.use(express.json({limit:"40mb", extended:true}))
+app.use(express.json({limit:"70mb", extended:true}))
 // 
 app.use("/hostel",hostelRouter)
 app.use("/warden",wardenRouter)
@@ -35,4 +40,9 @@ app.use("/rooms",roomsRouter)
 app.use('/students',studentsRouter)
 app.use('/announcements',announcementsRouter)
 app.use('/outpass',outpassRouter)
-
+app.use('/leaves',leavesRouter)
+app.use('/menu',menuRouter)
+app.use('/feadback',feadbackRouter)
+app.use('/complaints',complaintRouter)
+app.use('/services',serviceRouter)
+app.use('/maintenances',maintananceRouter)
