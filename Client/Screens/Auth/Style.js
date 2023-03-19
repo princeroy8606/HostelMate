@@ -1,12 +1,13 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import assets from '../../Components/Assets/assets';
 
+const {width} = Dimensions.get('window')
+const OtpInputWidth = Math.round(width/6)
 
 const styles= StyleSheet.create({
     authContainer:{
         width:"100%",
         height:"100%",
-        backgroundColor:"cyan",
         display:"flex",
     },
     shape:{
@@ -46,6 +47,7 @@ const styles= StyleSheet.create({
         borderRadius:20,
         alignItems:"center",
         justifyContent:'center',
+        textAlign:"center"
     },
     signUpText:{
         fontFamily:assets.FONTS.fontFamily,
@@ -69,7 +71,6 @@ const styles= StyleSheet.create({
         height:"100%",
         position:"absolute",
         justifyContent:"space-between",
-        zIndex:-1,
     },
     registerTop:{
         width:"100%",
@@ -112,6 +113,46 @@ const styles= StyleSheet.create({
         flexDirection:"row",
         marginBottom: 8,
         alignItems:"center",
+    },
+    loginTop:{
+        width:"100%",
+        height:"35%",
+        justifyContent:"flex-end",
+        alignItems:"center",
+        position:"relative"
+    },
+    backBtn:{
+        width:50,
+        height:50,
+        top:45,
+        left:30,
+        position:"absolute",
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    hostelId:{
+        width:"100%",
+        height:"65%",
+        alignItems:"center",
+        justifyContent:"center",
+        flexDirection:"column",
+        position:"relative"
+    },
+    OtpInputContainer:{
+        width:OtpInputWidth,
+        height:OtpInputWidth,
+        borderWidth:2,
+        borderColor:"red",
+        backgroundColor:"white",
+        justifyContent:"center",
+        alignItems:"center",
+        opacity:.5,
+        borderRadius:15
+    },
+    OtpInput:{
+        fontSize:assets.FONTS.Btn,
+        paddingHorizontal:15
+
     }
 })
 

@@ -5,7 +5,6 @@ const IMAGES={
     RegisterIcon:require("../../assets/images/RegisterIcon.png"),
     NextIcon:require("../../assets/images/next.png"),
     BackIcon:require("../../assets/images/back.png"),
-
 }
 
 const FONTS={
