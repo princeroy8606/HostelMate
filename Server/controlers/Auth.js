@@ -114,7 +114,7 @@ exports.emailVerification= async(req,res)=>{
 
 exports.OTPVerification = async(req,res)=>{
     let user
-    const {OTP ,mailID}= req.body
+    const {OTP,mailID}= req.body
     const mail = await MailOTP.findById(mailID)
     if(mail){
         try{
@@ -137,4 +137,9 @@ exports.OTPVerification = async(req,res)=>{
     }else{
         res.status(400).json({message:"OTP expired ... get new one"})
     }
+}
+
+exports.addPassword = async(req,res)=>{
+    const {userId,password} = req.body
+    
 }
