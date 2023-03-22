@@ -15,6 +15,7 @@ const feadbackRouter = require('./routers/feadback')
 const complaintRouter = require('./routers/complaints')
 const serviceRouter = require('./routers/services')
 const maintananceRouter = require('./routers/maintenance')
+const authenticationRouter = require('./routers/Auth')
 
 const app = express();
 
@@ -46,3 +47,4 @@ app.use('/feadback',feadbackRouter)
 app.use('/complaints',complaintRouter)
 app.use('/services',serviceRouter)
 app.use('/maintenances',maintananceRouter)
+app.use('/Auth',authenticationRouter)
