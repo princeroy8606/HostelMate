@@ -7,7 +7,6 @@ export default function App() {
   return (
     <View style={{flex:1}}>
       <AuthNav/>
-      <h1 style={{fontFamily:'sans-serif'}}></h1>
     </View>
   );
 }
