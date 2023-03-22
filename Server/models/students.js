@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
     studentId:{type:String,required:true},
     studentEmail:{type:String,required:true},
     roomNo:{type:Number,required:true},
-    studentPassword:{type:String},
+    Password:{type:String},
     complaints:[{type:mongoose.Schema.Types.ObjectId, ref:"Complaints"}],
     leaves:[{type:mongoose.Schema.Types.ObjectId, ref:"Leaves"}],
     outpass:[{type:mongoose.Schema.Types.ObjectId, ref:"Outpass"}],

@@ -2,10 +2,10 @@ const Hostel = require('../models/hostels')
 const Students = require('../models/students')
 const MailOTP = require('../models/mailToken')
 const Wardens = require('../models/warden')
-const util = require('util')
-const fs = require('fs')
+
 const { generateOTP, mailTransport, generateEmailTemplate } = require('../utils/email')
 const bcrypt = require('bcrypt')
+
 
 exports.validHostel = async(req,res)=>{
     const HostelId = req.body.hostelId
@@ -121,13 +121,13 @@ exports.OTPVerification = async(req,res)=>{
             const hashedOTP = mail.token
             const otp = await bcrypt.compare(OTP,hashedOTP)
             if(otp){
-                await MailOTP.findByIdAndDelete(mailID)
+                // await MailOTP.findByIdAndDelete(mailID)
                 if(mail.userModel ==='Student'){
                    user = await Students.findById(mail.userId) 
                 }else{
                     user = await Wardens.findById(mail.userId) 
                 }
-                res.status(200).json({user,message:"verifyed"})
+                res.status(200).json({userType:mail.userModel,message:"verifyed",userId:user._id},)
             }else{
                 res.status(400).json({message:"The Given OTP Is Wrong"})
             }   
@@ -140,6 +140,19 @@ exports.OTPVerification = async(req,res)=>{
 }
 
 exports.addPassword = async(req,res)=>{
-    const {userId,password} = req.body
-    
+    let user;
+    const {userId,Password,userType} = req.body
+    if(userType === 'Student'){
+        user = await Students.findById(userId)
+    }else{
+        user = await Wardens.findById(userId)
+    }
+    try{
+        const data =  await Students.findByIdAndUpdate(user._id,req.body,{new:true})
+        console.log(data)
+        res.status(200).json(data)
+    }catch(err){
+        res.status(400).json(err)
+    }
+
 }

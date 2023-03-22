@@ -8,6 +8,7 @@ router.post('/signup',Auth.singnUp)
 router.post('/login',Auth.logIn)
 router.post('/email',Auth.emailVerification)
 router.post('/OTP',Auth.OTPVerification)
+router.post('/password',Auth.addPassword)
 
 
 
