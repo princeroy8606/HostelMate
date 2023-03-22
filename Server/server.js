@@ -32,7 +32,7 @@ mongoose.connect(process.env.CONNECTION_URL)
 .catch((err)=>{
     console.log(err)
 })
-app.use(express.json({limit:"70mb", extended:true}))
+app.use(express.json());
 // 
 app.use("/hostel",hostelRouter)
 app.use("/warden",wardenRouter)

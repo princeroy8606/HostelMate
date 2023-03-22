@@ -6,14 +6,21 @@ import assets from '../../../Components/Assets/assets';
 import HostelId from './HostelId';
 import SignIn from './SignIn';
 import UserRegister from './UserRegister';
+import {useDispatch} from 'react-redux';
+import { validatehostel } from '../../../Redux/actions/Auth';
 
 
 const Login = () => {
   const [page ,setPage]=useState(0);
-  const [formData,setFormData]=useState({})
+  const [hostelID,sethosteID]=useState({})
 
+  const dispatch = useDispatch()
+  
   const handleNext =()=>{
-    setPage(page + 1)  
+    setPage(page + 1) 
+    console.log(hostelID) 
+    dispatch(validatehostel(hostelID))
+    
   }
   
   const handleSignIn =()=>{
@@ -23,20 +30,19 @@ const Login = () => {
   const manageLogin =()=>{
     if(page === 0){
       return(
-          <HostelId formData={formData} setFormData={setFormData}/>
+          <HostelId hostelID={hostelID} sethosteID={sethosteID}/>
       )
   }else if(page === 1){
       return(
-          <SignIn formData={formData} setFormData={setFormData}/>
+          <SignIn/>
       )
   }else{
       return(
-          <UserRegister formData={formData} setFormData={setFormData}/>
+          <UserRegister/>
       )
 
   }
 }
-
   const renderButton =()=>{
         switch(page){
           case 0:return(

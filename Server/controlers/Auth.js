@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt')
 //  validate the hostel .........
 exports.validHostel = async(req,res)=>{
     const HostelId = req.body.hostelId
+    console.log(req.body)
     try{
     const hostel = await Hostel.findOne({hostelId:HostelId})
     if(!hostel){
