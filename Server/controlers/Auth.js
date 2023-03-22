@@ -6,7 +6,7 @@ const Wardens = require('../models/warden')
 const { generateOTP, mailTransport, generateEmailTemplate } = require('../utils/email')
 const bcrypt = require('bcrypt')
 
-
+//  validate the hostel .........
 exports.validHostel = async(req,res)=>{
     const HostelId = req.body.hostelId
     try{
@@ -23,6 +23,7 @@ exports.validHostel = async(req,res)=>{
     
 }
 
+// login.............
 exports.logIn = async(req,res)=>{
     const user = req.body.user
     const email = req.body.email
@@ -34,7 +35,7 @@ exports.logIn = async(req,res)=>{
           res.status(404).json({message:"The Email does't Exist"})
       }else{
           try{
-            bcrypt.compare(password ,student.studentPassword,function(err,result){
+            bcrypt.compare(password ,student.Password,function(err,result){
                 console.log(result)
                 res.status(200).json({result,student})
             })
@@ -48,7 +49,7 @@ exports.logIn = async(req,res)=>{
         res.status(404).json({message:"The Email does't Exist"})
     }else{
         try{
-          const wardenPassword = warden.wardenPassword
+          const wardenPassword = warden.Password
           bcrypt.compare(password ,wardenPassword,function(err,result){
               console.log(result)
           })
@@ -59,17 +60,25 @@ exports.logIn = async(req,res)=>{
 }
 }
 
+// singup..........
 exports.singnUp = async(req,res)=>{
     const {password,email,user} = req.body;
+    const hashedPassword = await bcrypt.hash(password,12)
     try{
         if(user === "Student"){
             const  student = await Students.findOne({studentEmail:email})
             if(!student){
                 res.status(404).json({message:"The Email does't Exist"})
             }
-            const hashedPassword = await bcrypt.hash(password,12)
-            const Student = await Students.findByIdAndUpdate(student._id,{studentPassword:hashedPassword},{new:true})
+            const Student = await Students.findByIdAndUpdate(student._id,{Password:hashedPassword},{new:true})
             res.status(200).json(Student)
+        }else{
+                const  warden = await Students.findOne({wardenEmail:email})
+                if(!warden){
+                    res.status(404).json({message:"The Email does't Exist"})
+                }
+                const Warden = await Students.findByIdAndUpdate(warden._id,{Password:hashedPassword},{new:true})
+                res.status(200).json(Warden)
         }
     }catch(err){
         res.status(500).json(err)
@@ -77,7 +86,7 @@ exports.singnUp = async(req,res)=>{
 }
 
 
-
+// verify the email and send OTP...........
 exports.emailVerification= async(req,res)=>{
     let userModel;
     let user;
@@ -112,6 +121,7 @@ exports.emailVerification= async(req,res)=>{
     }
 }
 
+//verify the otp ............
 exports.OTPVerification = async(req,res)=>{
     let user
     const {OTP,mailID}= req.body
@@ -121,13 +131,13 @@ exports.OTPVerification = async(req,res)=>{
             const hashedOTP = mail.token
             const otp = await bcrypt.compare(OTP,hashedOTP)
             if(otp){
-                // await MailOTP.findByIdAndDelete(mailID)
+                await MailOTP.findByIdAndDelete(mailID)
                 if(mail.userModel ==='Student'){
                    user = await Students.findById(mail.userId) 
                 }else{
                     user = await Wardens.findById(mail.userId) 
                 }
-                res.status(200).json({userType:mail.userModel,message:"verifyed",userId:user._id},)
+                res.status(200).json({userType:mail.userModel,verified:true,userId:user._id},)
             }else{
                 res.status(400).json({message:"The Given OTP Is Wrong"})
             }   
@@ -137,22 +147,4 @@ exports.OTPVerification = async(req,res)=>{
     }else{
         res.status(400).json({message:"OTP expired ... get new one"})
     }
-}
-
-exports.addPassword = async(req,res)=>{
-    let user;
-    const {userId,Password,userType} = req.body
-    if(userType === 'Student'){
-        user = await Students.findById(userId)
-    }else{
-        user = await Wardens.findById(userId)
-    }
-    try{
-        const data =  await Students.findByIdAndUpdate(user._id,req.body,{new:true})
-        console.log(data)
-        res.status(200).json(data)
-    }catch(err){
-        res.status(400).json(err)
-    }
-
 }
