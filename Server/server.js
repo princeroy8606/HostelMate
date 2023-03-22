@@ -23,7 +23,6 @@ app.get("/",(req,res)=>{
     res.send("The hostel management app api");
 });
 
-
 mongoose.connect(process.env.CONNECTION_URL)
 .then(()=>{
     app.listen(3000,()=>{

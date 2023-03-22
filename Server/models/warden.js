@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const wardenSchema= new mongoose.Schema({
     wardenName:{type:String,required:true},
     wardenEmail:{type:String,required:true},
-    wardenPassword:{type:String,required:true},
+    wardenPassword:{type:String},
     students:[{type:mongoose.Schema.Types.ObjectId,ref:'Students'}],
     complaints:[{type:mongoose.Schema.Types.ObjectId,ref:"Complaints"}],
     outpass:[{type:mongoose.Schema.Types.ObjectId,ref:"Outpass"}],
