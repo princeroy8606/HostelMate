@@ -1,28 +1,28 @@
 
 import { View, Text,ImageBackground,TouchableOpacity,Image,SafeAreaView} from 'react-native';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../Style';
 import assets from '../../../Components/Assets/assets';
 import HostelId from './HostelId';
 import SignIn from './SignIn';
 import UserRegister from './UserRegister';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { validatehostel } from '../../../Redux/actions/Auth';
 
 
 const Login = () => {
   const [page ,setPage]=useState(0);
   const [hostelID,sethosteID]=useState({})
-
   const dispatch = useDispatch()
-  
-  const handleNext =()=>{
-    setPage(page + 1) 
-    console.log(hostelID) 
+  const hostelStatus =  useSelector( state=> state.authReducer.hostelData)
+
+  useEffect(()=>{
+    if(hostelStatus?.hostelExist) setPage(page + 1) 
+  },[hostelStatus])
+
+  const handleNext = ()=>{
     dispatch(validatehostel(hostelID))
-    
   }
-  
   const handleSignIn =()=>{
 
   }

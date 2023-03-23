@@ -8,12 +8,11 @@ const bcrypt = require('bcrypt')
 
 //  validate the hostel .........
 exports.validHostel = async(req,res)=>{
-    const HostelId = req.body.hostelId
-    console.log(req.body)
+    const HostelId = req.params.id
     try{
     const hostel = await Hostel.findOne({hostelId:HostelId})
     if(!hostel){
-        res.status(404).json({hostelExist:false,message:"Hostel Not Found"})
+        res.status(400).json({hostelExist:false,message:"Hostel Not Found"})
     }else{
         res.status(200).json({hostel,hostelExist:true})
     }
@@ -93,6 +92,7 @@ exports.emailVerification= async(req,res)=>{
     let user;
     const randomOTP = Math.round(Math.random()*9999)
     const {userType , email} = req.body
+    console.log(req.body)
     if(userType === 'Student'){
         userModel = 'Student'
         user = await Students.findOne({studentEmail:email})
@@ -100,26 +100,30 @@ exports.emailVerification= async(req,res)=>{
         userModel = 'Warden'
         user = await Wardens.findOne({wardenEmail:email})
     }
-    if(user)
-    try{
-        const OTP = generateOTP(randomOTP)
-        const mailOTP = new MailOTP({
-            userId:user._id,
-            token: await OTP,
-            userModel:userModel
-        })
-        mailTransport().sendMail({
-            from:"yourhostelmate@gmail.com",
-            to:email,
-            subject:"verification of Your hostel Mate account",
-            text:"Please verify the otp in your hostel mate application to verify your email ",
-            html:generateEmailTemplate(randomOTP)
-        })
-        await mailOTP.save()
-        res.status(200).json({mailOTP,message:"OTP sent Sucessfully.."})
-    }catch(err){
-        res.status(400).json(err)
+    if(user){
+        try{
+            const OTP = generateOTP(randomOTP)
+            const mailOTP = new MailOTP({
+                userId:user._id,
+                token: await OTP,
+                userModel:userModel
+            })
+            mailTransport().sendMail({
+                from:"yourhostelmate@gmail.com",
+                to:email,
+                subject:"verification of Your hostel Mate account",
+                text:"Please verify the otp in your hostel mate application to verify your email ",
+                html:generateEmailTemplate(randomOTP)
+            })
+            await mailOTP.save()
+            res.status(200).json({mailOTP,message:"OTP sent Successfully..",success:true})
+        }catch(err){
+            res.status(400).json(err)
+        }
+    }else{
+        res.status(400).json({message:"user dont exist "})
     }
+   
 }
 
 //verify the otp ............

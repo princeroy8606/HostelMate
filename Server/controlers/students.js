@@ -23,6 +23,7 @@ exports.addStudent = async(req,res)=>{
     const room = await Rooms.findOne({roomNo:req.body.roomNo})
     const email = req.body.Email;
     const existingStudent = await Students.findOne({studentEmail:email})
+    // console.log(existingStudent)
     if(!existingStudent){
         try{
             const student = new Students({

@@ -2,23 +2,33 @@ import { View, Text, TextInput ,TouchableOpacity,KeyboardAvoidingView, Keyboard}
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../Style";
 import { useNavigation } from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import { verifyemail, verifyOTP } from "../../../Redux/actions/Auth";
 
 const input = Array(4).fill('')
 let newInputIndex  = 0
+let data ={
+  OTP:'',
+  mailID:''
+}
 //converting object to array
 const isObjvalid = (obj) => {
   return Object.values(obj).every(val => val.trim())
 }
-
+// 
 const UserRegister = () => {
   const inputRef = useRef()
   const [ showMail, setShowMail ] = useState(true);
+  const [Email,setEmail] = useState({userType:"Student",email:""})
   const [OTP , setOTP] = useState({0:'',1:'',2:'',3:''})
   const [nextInputIndex,setNextInputIndex]=useState(0)
-
-  
+  const dispatch = useDispatch()
   const Navigation = useNavigation()
-  
+  const emailStatus = useSelector(state => state.authReducer.mailData)
+  const otpStatus = useSelector(state => state.authReducer.OTPdata)
+
+
+  // send and confirm otp
   const handleRegister = () =>{
     Keyboard.dismiss();
     if(isObjvalid(OTP)){
@@ -26,13 +36,26 @@ const UserRegister = () => {
       Object.values(OTP).forEach(val => {
         value = value+val
       })
+      data.OTP=value,
+     
+
+      dispatch(verifyOTP(data))
     }
-    // Navigation.navigate("SetPassword")
   }
-  
+  useEffect(()=>{
+    if(otpStatus.verified)  Navigation.navigate("SetPassword")
+  },[otpStatus])
+
+  // send and confirm email
   const handleOTP =()=>{
-    setShowMail(!showMail)
+    dispatch(verifyemail(Email))
   }
+  useEffect(()=>{
+    console.log(emailStatus.mailOTP._id)
+    if(emailStatus?.success) setShowMail(!showMail)
+    data.mailID=emailStatus?.mailOTP._id
+  },[emailStatus])
+  
 
   const handleChangeText = (text,index) =>{
       const newOTP = {...OTP}
@@ -46,7 +69,6 @@ const UserRegister = () => {
       }
       setNextInputIndex(newInputIndex)
     };
-
     useEffect(()=>{
       inputRef.current?.focus()
     },[nextInputIndex])
@@ -57,6 +79,7 @@ const UserRegister = () => {
         <TextInput
           placeholder="Email"
           style={[styles.registerInputs, { marginBottom: 85 }]}
+          onChangeText={(e)=> setEmail({...Email,email:e})}
         />
       ) : (
          <KeyboardAvoidingView style ={styles.registerBottom}>

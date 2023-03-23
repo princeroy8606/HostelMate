@@ -5,7 +5,7 @@ import styles from '../Style'
 const hostelId = ({hostelID,sethosteID}) => {
   return (
     <View style={styles.hostelId}>
-         <TextInput placeholder='Hostel Id' style={styles.registerInputs} onChangeText={(e)=> sethosteID({...hostelID,hostelId:e})} />
+         <TextInput placeholder='Hostel Id' style={styles.registerInputs} onChangeText={(e)=> sethosteID({...hostelID,hostelId:e})} value={hostelID.hostelId}/>
     </View>
   )
 }
