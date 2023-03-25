@@ -5,15 +5,18 @@ import {applyMiddleware,compose} from 'redux';
 import {createStore} from 'redux'
 import thunk from 'redux-thunk';
 import reducers from './Redux/reducers';
+import { AuthProvider } from './context/Authcontext';
 
 const store =createStore(reducers,compose(applyMiddleware(thunk)))
 
 export default function App() {
   return (
     <Provider store={store}>
-    <View style={{flex:1}}>
-      <AuthNav/>
-    </View>
+      <AuthProvider>
+        <View style={{flex:1}}>
+          <AuthNav/>
+        </View>
+      </AuthProvider>
     </Provider>
   );
 }

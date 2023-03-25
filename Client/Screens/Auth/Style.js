@@ -105,6 +105,7 @@ const styles= StyleSheet.create({
         borderRadius:15,
         padding:10,
         margin: 6,
+        fontSize:16
     },
     roomDetails:{
         width:"50%",
@@ -153,6 +154,10 @@ const styles= StyleSheet.create({
         fontSize:assets.FONTS.Btn,
         paddingHorizontal:15
 
+    },
+    wrongPassword:{
+        borderColor:"red",
+        
     }
 })
 

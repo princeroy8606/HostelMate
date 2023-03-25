@@ -37,13 +37,11 @@ const UserRegister = () => {
         value = value+val
       })
       data.OTP=value,
-     
-
       dispatch(verifyOTP(data))
     }
   }
   useEffect(()=>{
-    if(otpStatus.verified)  Navigation.navigate("SetPassword")
+    if(otpStatus?.verified)  Navigation.navigate("SetPassword",{Email})
   },[otpStatus])
 
   // send and confirm email
@@ -51,7 +49,7 @@ const UserRegister = () => {
     dispatch(verifyemail(Email))
   }
   useEffect(()=>{
-    console.log(emailStatus.mailOTP._id)
+    console.log(emailStatus?.mailOTP._id)
     if(emailStatus?.success) setShowMail(!showMail)
     data.mailID=emailStatus?.mailOTP._id
   },[emailStatus])

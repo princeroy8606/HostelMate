@@ -3,6 +3,7 @@ const authReducer = (state = {
     mailData:null,
     hostelData:null,
     OTPdata:null,
+    userInfo:null
 },action)=>{
     switch (action.type){
         case "VALIDATE_HOSTEL":
@@ -11,6 +12,9 @@ const authReducer = (state = {
             return{...state,mailData:action?.data};
         case "OTP_VERIFICATION":   
             return{...state,OTPdata:action?.data};
+        case 'SIGN_UP':
+            console.log(action.data)
+            return{...state,userInfo:action.data}
         default:
         return state;
     }

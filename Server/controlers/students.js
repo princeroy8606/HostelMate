@@ -44,7 +44,7 @@ exports.addStudent = async(req,res)=>{
             res.status(404).json({message:err})
         }
     }else{
-        res.status(500).json({message:"Warden email alreday exist"})
+        res.status(500).json({message:"Student email alreday exist"})
     }
 }
 

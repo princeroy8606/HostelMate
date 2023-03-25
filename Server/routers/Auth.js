@@ -9,5 +9,4 @@ router.post('/login',Auth.logIn)
 router.post('/email',Auth.emailVerification)
 router.post('/OTP',Auth.OTPVerification)
 
-
 module.exports = router;

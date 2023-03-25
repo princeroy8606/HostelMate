@@ -25,3 +25,13 @@ export const verifyOTP = (hostelID) => async (dispatch)=>{
         console.log(err)
     }
 }
+
+export const SingnUp = (userData)=> async(dispatch)=>{
+    console.log(userData)
+    try{
+        const {data} = await api.singnUp(userData)
+        dispatch({type:'SIGN_UP',data})
+    }catch(err){
+        console.log(err)
+    }
+}

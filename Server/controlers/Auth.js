@@ -62,23 +62,27 @@ exports.logIn = async(req,res)=>{
 
 // singup..........
 exports.singnUp = async(req,res)=>{
-    const {password,email,user} = req.body;
+    console.log(req.body)
+    const {password,email,userType} = req.body;
     const hashedPassword = await bcrypt.hash(password,12)
     try{
-        if(user === "Student"){
-            const  student = await Students.findOne({studentEmail:email})
+        if(userType === "Student"){
+            const student = await Students.findOne({studentEmail:email})
             if(!student){
                 res.status(404).json({message:"The Email does't Exist"})
+            }else{
+                const Student = await Students.findByIdAndUpdate(student._id,{Password:hashedPassword},{new:true})
+                res.status(200).json(Student)
             }
-            const Student = await Students.findByIdAndUpdate(student._id,{Password:hashedPassword},{new:true})
-            res.status(200).json(Student)
         }else{
                 const  warden = await Students.findOne({wardenEmail:email})
+                console.log(warden)
                 if(!warden){
                     res.status(404).json({message:"The Email does't Exist"})
+                }else{
+                    const Warden = await Students.findByIdAndUpdate(warden._id,{Password:hashedPassword},{new:true})
+                    res.status(200).json(Warden)
                 }
-                const Warden = await Students.findByIdAndUpdate(warden._id,{Password:hashedPassword},{new:true})
-                res.status(200).json(Warden)
         }
     }catch(err){
         res.status(500).json(err)
@@ -116,7 +120,7 @@ exports.emailVerification= async(req,res)=>{
                 html:generateEmailTemplate(randomOTP)
             })
             await mailOTP.save()
-            res.status(200).json({mailOTP,message:"OTP sent Successfully..",success:true})
+            res.status(200).json({mailOTP,message:"OTP sent Successfully..",success:true,Email:email})
         }catch(err){
             res.status(400).json(err)
         }
@@ -131,23 +135,25 @@ exports.OTPVerification = async(req,res)=>{
     let user
     const {OTP,mailID}= req.body
     const mail = await MailOTP.findById(mailID)
+    console.log(mail)
     if(mail){
         try{
             const hashedOTP = mail.token
             const otp = await bcrypt.compare(OTP,hashedOTP)
             if(otp){
-                await MailOTP.findByIdAndDelete(mailID)
                 if(mail.userModel ==='Student'){
-                   user = await Students.findById(mail.userId) 
+                    user = await Students.findById(mail.userId)
                 }else{
                     user = await Wardens.findById(mail.userId) 
                 }
+                await MailOTP.findByIdAndDelete(mailID)
+                console.log(mail)
                 res.status(200).json({userType:mail.userModel,verified:true,userId:user._id},)
             }else{
                 res.status(400).json({message:"The Given OTP Is Wrong"})
             }   
         }catch(err){
-            res.status(400).json(err)
+            res.status(400).json(err.message)
         }
     }else{
         res.status(400).json({message:"OTP expired ... get new one"})
