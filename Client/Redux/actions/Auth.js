@@ -35,3 +35,12 @@ export const SingnUp = (userData)=> async(dispatch)=>{
         console.log(err)
     }
 }
+export const LoginIn = (loginData)=> async(dispatch)=>{
+    console.log(loginData)
+    try{
+        const {data} = await api.logIn(loginData)
+        dispatch({type:'LOGIN',data})
+    }catch(err){
+        console.log(err)
+    }
+}

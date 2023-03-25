@@ -137,7 +137,7 @@ const styles= StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         flexDirection:"column",
-        position:"relative"
+        position:"relative",
     },
     OtpInputContainer:{
         width:OtpInputWidth,
@@ -155,10 +155,26 @@ const styles= StyleSheet.create({
         paddingHorizontal:15
 
     },
-    wrongPassword:{
-        borderColor:"red",
-        
+    userTypeContainer:{
+        backgroundColor:"black",
+        flexDirection:"row",
+        width:"75%",
+        shadowColor:"black",
+        height:50,
+        borderRadius:15,
+        fontSize:16,
+        marginBottom:34,
+    },
+    userType:{
+        width:"50%",
+        backgroundColor:"black",
+        height:"100%",
+        borderRadius:15,
+        alignItems:"center",
+        justifyContent:"center"
+
     }
+
 })
 
 export default styles

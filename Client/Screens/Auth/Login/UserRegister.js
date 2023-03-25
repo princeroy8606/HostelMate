@@ -7,10 +7,7 @@ import { verifyemail, verifyOTP } from "../../../Redux/actions/Auth";
 
 const input = Array(4).fill('')
 let newInputIndex  = 0
-let data ={
-  OTP:'',
-  mailID:''
-}
+
 //converting object to array
 const isObjvalid = (obj) => {
   return Object.values(obj).every(val => val.trim())

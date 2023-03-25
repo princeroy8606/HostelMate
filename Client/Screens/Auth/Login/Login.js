@@ -11,6 +11,13 @@ import { validatehostel } from '../../../Redux/actions/Auth';
 
 
 const Login = () => {
+  let loginData = {
+    password:null,
+    emial:null,
+    userType:null
+  }
+  const [password,setPassword] = useState();
+  const [Email,setEmail] = useState();
   const [page ,setPage]=useState(0);
   const [hostelID,sethosteID]=useState({})
   const dispatch = useDispatch()
@@ -34,7 +41,7 @@ const Login = () => {
       )
   }else if(page === 1){
       return(
-          <SignIn/>
+          <SignIn setPassword={setPassword} setEmail={setEmail} userType={userType}/>
       )
   }else{
       return(

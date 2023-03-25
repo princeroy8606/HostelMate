@@ -25,11 +25,11 @@ exports.validHostel = async(req,res)=>{
 
 // login.............
 exports.logIn = async(req,res)=>{
-    const user = req.body.user
+    const userType = req.body.user
     const email = req.body.email
     const password = req.body.password
     console.log(password,email,user)
-    if(user === "Student"){
+    if(userType === "Student"){
       const  student = await Students.findOne({studentEmail:email})
       if(!student){
           res.status(404).json({message:"The Email does't Exist"})
@@ -37,7 +37,7 @@ exports.logIn = async(req,res)=>{
           try{
             bcrypt.compare(password ,student.Password,function(err,result){
                 console.log(result)
-                res.status(200).json({result,student})
+                res.status(200).json({result,student,userType:userType})
             })
           }catch(err){
               res.status(400).json(err)
@@ -72,7 +72,7 @@ exports.singnUp = async(req,res)=>{
                 res.status(404).json({message:"The Email does't Exist"})
             }else{
                 const Student = await Students.findByIdAndUpdate(student._id,{Password:hashedPassword},{new:true})
-                res.status(200).json(Student)
+                res.status(200).json({Student,userType:userType})
             }
         }else{
                 const  warden = await Students.findOne({wardenEmail:email})
