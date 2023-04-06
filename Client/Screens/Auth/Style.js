@@ -105,15 +105,28 @@ const styles= StyleSheet.create({
         borderRadius:15,
         padding:10,
         margin: 6,
-        fontSize:16
+        fontSize:18
     },
     roomDetails:{
-        width:"50%",
+        width:"90%",
         height:80,
         justifyContent:"space-between",
         flexDirection:"row",
         marginBottom: 8,
         alignItems:"center",
+        // backgroundColor:"yellow"
+    },
+    roomTypes:{
+        width:"90%",
+        height:80,
+        justifyContent:"space-between",
+        flexDirection:"row",
+        marginBottom: 8,
+        alignItems:"center",
+        borderColor:"red",
+        borderWidth:1,
+        borderRadius:15,
+        padding:5
     },
     loginTop:{
         width:"100%",

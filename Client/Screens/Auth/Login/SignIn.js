@@ -1,21 +1,28 @@
 import { View, Text ,TextInput,TouchableOpacity} from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../Style'
 import { useDispatch } from 'react-redux'
+import Password from './Password'
 
 
 
-const SignIn = () => {
-const [userType,setUserType]= useState('Student');
-const [password,setPassword] = useState();
-const [Email,setEmail] = useState();
-const dispatch = useDispatch()
+const SignIn = ({setPassword,setEmail,userType}) => {
+const [UserType,setUserType]= useState('Student');
+const [userPassword,setUserPassword] = useState('');
+const [userEmail,setUserEmail] = useState('');
+
+useEffect(()=>{
+  setPassword(userPassword)
+  setEmail(userEmail)
+  userType(UserType)
+ },[UserType,userPassword,userEmail])
+
 
 const setWarden=()=>{
- if(userType === 'Warden')return{backgroundColor:"#B1A7A6"}
+ if(UserType === 'Warden')return{backgroundColor:"#B1A7A6"}
 }
 const setStudent = ()=>{
-  if(userType === 'Student')return{backgroundColor:"#B1A7A6"}
+  if(UserType === 'Student')return{backgroundColor:"#B1A7A6"}
 }
 
 
@@ -30,8 +37,10 @@ const setStudent = ()=>{
           <Text  style={styles.signUpText}>Warden</Text>
         </TouchableOpacity>
       </View>
-         <TextInput placeholder='Email' style={[styles.registerInputs,{marginBottom:35}]} onChangeText={(value)=>setPassword(...password,value)}/>
-         <TextInput placeholder='Password' style={styles.registerInputs} secureTextEntry/>
+         <TextInput placeholder='Email' style={[styles.registerInputs,{marginBottom:35}]} 
+         onChangeText={(value)=>setUserEmail(value)}/>
+         <TextInput placeholder='Password' style={styles.registerInputs} secureTextEntry
+         onChangeText={(value)=>setUserPassword(value)}/>
          <View style={{position:"absolute",left:"15%",bottom:"25%"}}>
          <TouchableOpacity>
              <Text style={{color:"#9BBA9E"}}>Forgot password ?</Text>

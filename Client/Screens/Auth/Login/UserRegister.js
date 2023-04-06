@@ -24,6 +24,17 @@ const UserRegister = () => {
   const emailStatus = useSelector(state => state.authReducer.mailData)
   const otpStatus = useSelector(state => state.authReducer.OTPdata)
 
+  // 
+  const data = {OTP:'', mailID:''}
+
+  const setWarden=()=>{
+    if(Email.userType === 'Warden')return{backgroundColor:"#B1A7A6"}
+    console.log(Email)
+   }
+   const setStudent = ()=>{
+     if(Email.userType === 'Student')return{backgroundColor:"#B1A7A6"}
+     console.log(Email)
+   }
 
   // send and confirm otp
   const handleRegister = () =>{
@@ -34,6 +45,8 @@ const UserRegister = () => {
         value = value+val
       })
       data.OTP=value,
+      data.mailID=emailStatus?.mailOTP._id,
+      console.log(data)
       dispatch(verifyOTP(data))
     }
   }
@@ -48,7 +61,6 @@ const UserRegister = () => {
   useEffect(()=>{
     console.log(emailStatus?.mailOTP._id)
     if(emailStatus?.success) setShowMail(!showMail)
-    data.mailID=emailStatus?.mailOTP._id
   },[emailStatus])
   
 
@@ -71,11 +83,23 @@ const UserRegister = () => {
   return (
     <View style={[styles.hostelId]}>
       {showMail ? (
+        <View style={styles.hostelId}>
+        <View style={[styles.userTypeContainer]}>
+        <TouchableOpacity style={[styles.userType,setStudent()]} 
+          onPress={()=>setEmail({...Email,userType:"Student"})}>
+          <Text style={styles.signUpText}>Student</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.userType,{backgroundColor:"black"},setWarden()]} 
+          onPress={()=>setEmail({...Email,userType:"Warden"})}>
+          <Text  style={styles.signUpText}>Warden</Text>
+        </TouchableOpacity>
+      </View>
         <TextInput
           placeholder="Email"
           style={[styles.registerInputs, { marginBottom: 85 }]}
           onChangeText={(e)=> setEmail({...Email,email:e})}
         />
+        </View>
       ) : (
          <KeyboardAvoidingView style ={styles.registerBottom}>
             <Text style={{color:"white"}}>Please verify your email , PIN has been sent to your email</Text>

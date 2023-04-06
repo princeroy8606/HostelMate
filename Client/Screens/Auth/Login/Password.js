@@ -13,7 +13,6 @@ const Password = ({route}) => {
   const [password , setPassword] = useState('');
   const [conformPassword , setConformPassword] = useState('');
   const [isPasswordCrct,setIsPasswordCrct] = useState(true)
-  // const [data , setData] = useState({ })
   const dispatch = useDispatch()
   const Email = useSelector((state)=> state.authReducer?.mailData?.Email)
   const user = useSelector((state)=> state.authReducer?.OTPdata?.userType)

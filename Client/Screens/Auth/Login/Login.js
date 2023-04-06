@@ -7,18 +7,21 @@ import HostelId from './HostelId';
 import SignIn from './SignIn';
 import UserRegister from './UserRegister';
 import {useDispatch,useSelector} from 'react-redux';
-import { validatehostel } from '../../../Redux/actions/Auth';
+import { validatehostel ,LoginIn } from '../../../Redux/actions/Auth';
 
 
 const Login = () => {
+
   let loginData = {
     password:null,
-    emial:null,
+    email:null,
     userType:null
   }
+  
   const [password,setPassword] = useState();
   const [Email,setEmail] = useState();
   const [page ,setPage]=useState(0);
+  const [userType ,setUserType]= useState()
   const [hostelID,sethosteID]=useState({})
   const dispatch = useDispatch()
   const hostelStatus =  useSelector( state=> state.authReducer.hostelData)
@@ -31,7 +34,10 @@ const Login = () => {
     dispatch(validatehostel(hostelID))
   }
   const handleSignIn =()=>{
-
+    loginData.email=Email,
+    loginData.password=password,
+    loginData.userType=userType,
+    dispatch(LoginIn(loginData))
   }
 
   const manageLogin =()=>{
@@ -41,7 +47,7 @@ const Login = () => {
       )
   }else if(page === 1){
       return(
-          <SignIn setPassword={setPassword} setEmail={setEmail} userType={userType}/>
+          <SignIn setPassword={setPassword} setEmail={setEmail} userType={setUserType}/>
       )
   }else{
       return(

@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text ,StatusBar} from 'react-native'
 import React, { useContext } from 'react';
 import StudentHome from '../Screens/Student/StudentHome';
 import WardenHome from '../Screens/Warden/WardenHome';

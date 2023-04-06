@@ -13,10 +13,10 @@ const authReducer = (state = {
         case "OTP_VERIFICATION":   
             return{...state,OTPdata:action?.data};
         case 'SIGN_UP':
-            return{...state,userInfo:action.data}
+            return{...state,userInfo:action?.data}
          case 'LOGIN':
             console.log(action.data)
-            return{...state,userInfo:action.data}
+            return{...state,userInfo:action?.data}
         default:
         return state;
     }

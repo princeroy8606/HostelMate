@@ -1,4 +1,4 @@
-import { View, Text,ImageBackground,TouchableOpacity,} from 'react-native';
+import { View, Text,ImageBackground,TouchableOpacity,StatusBar} from 'react-native';
 import styles from './Style';
 import assets from '../../Components/Assets/assets';
 import Animated,{useSharedValue,useAnimatedStyle, withTiming}from 'react-native-reanimated';

@@ -17,7 +17,7 @@ exports.getAllRooms = async(req,res)=>{
 //add new room
 exports.addRooms = async(req,res)=>{
     const RoomNo = req.body.RoomNo;
-    const hostelId= req.params.id
+    const hostelId= req.body.hostelId
     const hostel = await Hostel.findOne({hostelId:hostelId})
     const Room = await hostel.populate('rooms')
     const existingRoom = Room.rooms.some(room => {
@@ -66,4 +66,53 @@ exports.deleteRoom = async(req,res)=>{
     }
 }
 
-//get singleroom
+//add bunch of room
+exports.createRooms = async(req,res)=>{
+    let allRooms_ids = [];
+    const RoomsData = req.body.roomsData;
+    const hostelId= req.body.hostelId;
+    const hostel = await Hostel.findOne({hostelId:hostelId})
+    const Room = await hostel.populate('rooms')
+    try{
+        await Promise.all(
+            RoomsData?.map(async(rooms)=>{
+                let N = rooms.roomNoStarting
+                for(let i= 0;i<=rooms.noOfRooms;i++){
+                    const existingRoom = Room.rooms.some(room => {
+                       return room.roomNo === N
+                    })
+                     if(existingRoom){
+                    //     throw new Error("Room already exist")
+                    //  }else{
+                            try{
+                                 const newRoom = new Rooms({
+                                    roomNo:N,
+                                    roomType:rooms.roomType
+                                })
+                                await newRoom.save()
+                                allRooms_ids.push(newRoom._id)
+                                console.log('Room Created with room NO:'+N)
+                            }catch(err){
+                                console.log(err)
+                            }
+                    }
+                    N += 1;
+                }
+            })
+        )
+        if(allRooms_ids){
+            allRooms_ids.map(async(id)=>{
+                hostel.rooms.push(id)
+                console.log(id)
+            })
+            await hostel.save()
+        } 
+        
+        // }
+        res.status(201).json({"message":"Rooms Created sucessfully"})
+    }
+    catch(err){
+        console.log(err)
+        res.status(404).json({message:err.message})
+    }
+}

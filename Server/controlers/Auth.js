@@ -10,10 +10,10 @@ const bcrypt = require('bcrypt')
 exports.validHostel = async(req,res)=>{
     const HostelId = req.params.id
     try{
-    const hostel = await Hostel.findOne({hostelId:HostelId})
-    if(!hostel){
-        res.status(400).json({hostelExist:false,message:"Hostel Not Found"})
-    }else{
+        const hostel = await Hostel.findOne({hostelId:HostelId})
+        if(!hostel){
+            res.status(400).json({hostelExist:false,message:"Hostel Not Found"})
+        }else{
         res.status(200).json({hostel,hostelExist:true})
     }
     }
@@ -25,10 +25,10 @@ exports.validHostel = async(req,res)=>{
 
 // login.............
 exports.logIn = async(req,res)=>{
-    const userType = req.body.user
+    const userType = req.body.userType
     const email = req.body.email
     const password = req.body.password
-    console.log(password,email,user)
+    console.log(req.body)
     if(userType === "Student"){
       const  student = await Students.findOne({studentEmail:email})
       if(!student){
