@@ -12,6 +12,7 @@ const IMAGES={
     WardenIcon:require('../../assets/images/WardenLogo.png'),
     CallIcon:require('../../assets/images/Call-Icon.png'),
     WhatsappIcon:require('../../assets/images/Whatsapp-Icon.png'),
+    ProfileIcon:require('../../assets/images/ProfileIcon.png'),
 }
 
 const FONTS={

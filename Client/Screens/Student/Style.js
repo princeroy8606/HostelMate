@@ -170,14 +170,15 @@ const  Style = StyleSheet.create({
     },
     complaintCover:{
         width:"100%",
-        height:"70%",
+        height:"80%",
         // backgroundColor:"yellow",
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        flexDirection:"column"
     },
     complaintBody:{
         width:"80%",
-        height:"50%",
+        height:"40%",
         // backgroundColor:"cyan",
     },
     complaintSubject:{
@@ -196,6 +197,62 @@ const  Style = StyleSheet.create({
         borderColor:"black",
         borderWidth:2,
         padding:10
+    },
+    profileHeader:{
+        width:"100%",
+        height:"20%",
+        // backgroundColor:"black",
+        alignItems:"center",
+        justifyContent:"center",
+    },
+    profilePic:{
+        width:110,
+        height:110,
+        borderRadius:50,
+        justifyContent:"center",
+        alignItems:"center",
+        backgroundColor:"#89AEB6",
+        shadowColor:"black",
+        elevation:20,
+
+    },
+    profileContainer:{
+        width:"100%",
+        height:"65%",
+        // backgroundColor:"yellow",
+        justifyContent:"space-around",
+        alignItems:"center",
+
+    },
+    CollegeDetails:{
+        width:"85%",
+        height:"20%",
+        backgroundColor:"white",
+        borderRadius:20,
+        flexDirection:"row",
+        padding:5,
+        shadowColor:"black",
+        elevation:20,
+    },
+    Details:{
+        width:"50%",
+        height:"100%",
+        justifyContent:"space-around",
+        flexDirection:"column",
+    },
+    profileBottom:{
+        width:"100%",
+        // backgroundColor:"red",
+        height:"15%",
+        justifyContent:"space-around",
+        alignItems:"center"
+    },
+    logout:{
+        width:"60%",
+        height:"35%",
+        // backgroundColor:"red",
+        flexDirection:"row",
+        justifyContent:"center"
     }
 })
 

@@ -8,7 +8,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Animated, { RollInLeft, color } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 
 const Tab = createBottomTabNavigator()
@@ -21,7 +21,6 @@ const TabBar = () => {
     {route:'Profile' , type:MaterialCommunityIcons, icon:'account-circle-outline' ,component : SProfile},
   ]
 
-const translateY = React.useRef(new Animated.Value(0)).current
 
 
 // const TabIconAnimation =()=>{
@@ -33,12 +32,14 @@ const translateY = React.useRef(new Animated.Value(0)).current
 //     ).start()
 // }
 
+
   return (
    <Tab.Navigator
    screenOptions={{
      headerShown:false,
      tabBarShowLabel:false,
-     tabBarStyle:{backgroundColor:"#B1A7A6",height: 75,bottom:18,borderRadius:70,width:"85%",position:"absolute",left:30},
+     tabBarHideOnKeyboard:true,
+     tabBarStyle:{backgroundColor:"#B1A7A6",height: 75,borderRadius:70,width:"85%",position:"absolute",left:30,bottom:18},
    }}
    >
    {
@@ -48,6 +49,7 @@ const translateY = React.useRef(new Animated.Value(0)).current
         options={{
           tabBarBadge: item.route === 'Notification' ? '':null,
           tabBarBadgeStyle:{backgroundColor:"#FFF500",height:8,maxWidth:5,borderRadius:10,top:7},
+         
           tabBarIcon:({color,size ,focused})=>(
           <Animated.View 
           style={ focused ? 
