@@ -21,7 +21,7 @@ const TabBar = () => {
     {route:'Profile' , type:MaterialCommunityIcons, icon:'account-circle-outline' ,component : SProfile},
   ]
 
-const translateY = React.useRef(new Animated.Value(0)).current
+// const translateY = React.useRef(new Animated.Value(0)).current
 
 
 // const TabIconAnimation =()=>{

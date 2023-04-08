@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text ,ImageBackground} from 'react-native'
+import React from 'react';
+import assets from '../../Components/Assets/assets';
+import Style from './Style';
 
 const SProfile = () => {
   return (
-    <View>
-      <Text>SProfile</Text>
-    </View>
+    <ImageBackground style={Style.homeConatiner} source={assets.IMAGES.bg1}>
+    <Text>Profile</Text>
+  </ImageBackground>
   )
 }
 
