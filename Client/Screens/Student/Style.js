@@ -137,8 +137,27 @@ const  Style = StyleSheet.create({
     phoneNumber:{
         flexDirection:"row"
     },
-    Tabbar:{
-        
+    complaintTop:{
+        width:"100%",
+        height:"5%",
+        flexDirection:'row',
+        justifyContent:"flex-end",
+        paddingRight:15
+    },
+    complaintContainer:{
+        width:"90%",
+        height:"80%",
+        backgroundColor:"white",
+        borderRadius:50
+    },
+    history:{
+        width:"25%",
+        height:"80%",
+        backgroundColor:"#D8CECE",
+        borderRadius:60,
+        alignItems:"center",
+        justifyContent:"space-around",
+        flexDirection:"row"
     }
 
 

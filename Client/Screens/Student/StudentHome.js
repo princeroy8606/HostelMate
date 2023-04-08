@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground,Image ,TouchableOpacity} from 'react-native'
+import { View, Text, ImageBackground,Image ,TouchableOpacity,StatusBar} from 'react-native'
 import React from 'react'
 import Style from './Style'
 import assets from '../../Components/Assets/assets';
@@ -9,6 +9,7 @@ const StudentHome = () => {
   console.log(isFocused)
   return (
     <ImageBackground style={Style.homeConatiner} source={assets.IMAGES.bg1}>
+      {/* <StatusBar hidden /> */}
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>
