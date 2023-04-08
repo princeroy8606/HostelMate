@@ -8,8 +8,8 @@ const StudentHome = () => {
   const isFocused = useIsFocused()
   console.log(isFocused)
   return (
-    <ImageBackground style={Style.homeConatiner} source={assets.IMAGES.bg1}>
-      {/* <StatusBar hidden /> */}
+    // <View style={Style.homeConatiner}>
+      <ImageBackground style={[Style.homeConatiner,{height:"100%"}]} source={assets.IMAGES.bg1} resizeMethod="scale" resizeMode='cover'>
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>
@@ -59,6 +59,8 @@ const StudentHome = () => {
       </View>
     </View>
     </ImageBackground>
+    // </View>
+    
   )
 }
 

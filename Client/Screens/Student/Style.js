@@ -2,17 +2,18 @@ import React from 'react'
 import { StyleSheet,StatusBar,Dimensions } from 'react-native'
 
 const Topbar = StatusBar.currentHeight
-
+const height = Dimensions.get('window').height
 
 const  Style = StyleSheet.create({
     homeConatiner:{
+        height:height,
         flex:1,
-        backgroundColor:"red",
-        paddingTop:Topbar,
+        backgroundColor:"black",
+        // paddingTop:Topbar,
     },
     TopContent:{
         width:"100%",
-        height:"100%",
+        height:height,
         // backgroundColor:"red"
     },
     menuServiceConatiiner:{
@@ -185,7 +186,16 @@ const  Style = StyleSheet.create({
         // backgroundColor:"red",
         borderRadius:15,
         borderColor:"black",
-        borderWidth:2
+        borderWidth:2,
+        padding:10
+    },
+    complaintContent:{
+        width:"100%",
+        height:"100%",
+        borderRadius:15,
+        borderColor:"black",
+        borderWidth:2,
+        padding:10
     }
 })
 
