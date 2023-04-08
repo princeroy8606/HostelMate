@@ -64,8 +64,8 @@ const SProfile = () => {
             <Text style={{alignSelf:"center",fontSize:20}}>Logout</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[Style.logout,{backgroundColor:"red",borderRadius:50}]}>
-            <AntDesign name='delete'  size={20} style={{alignSelf:"center",paddingRight:10}}/>
-            <Text style={{alignSelf:"center",fontSize:20}}>Delete Account</Text>
+            <AntDesign name='delete'  size={20} color={"white"} style={{alignSelf:"center",paddingRight:10}}/>
+            <Text style={{alignSelf:"center",fontSize:20,color:"white"}}>Delete Account</Text>
           </TouchableOpacity>
         </View>
       </View>
