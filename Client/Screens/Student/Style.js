@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet,StatusBar } from 'react-native'
+import { StyleSheet,StatusBar,Dimensions } from 'react-native'
 
 const Topbar = StatusBar.currentHeight
+
 
 const  Style = StyleSheet.create({
     homeConatiner:{
@@ -158,9 +159,34 @@ const  Style = StyleSheet.create({
         alignItems:"center",
         justifyContent:"space-around",
         flexDirection:"row"
+    },
+    complaintHeader:{
+        width:"100%",
+        height:"10%",
+        // backgroundColor:"black",
+        alignItems:"center",
+        justifyContent:"center",
+    },
+    complaintCover:{
+        width:"100%",
+        height:"70%",
+        // backgroundColor:"yellow",
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    complaintBody:{
+        width:"80%",
+        height:"50%",
+        // backgroundColor:"cyan",
+    },
+    complaintSubject:{
+        width:"100%",
+        height:"20%",
+        // backgroundColor:"red",
+        borderRadius:15,
+        borderColor:"black",
+        borderWidth:2
     }
-
-
 })
 
 export default Style
