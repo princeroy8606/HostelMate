@@ -8,7 +8,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const AuthNav = () => {
-  const {userData} = useContext(AuthContext)
+  // const {userData} = useContext(AuthContext)
+   let userData = true
 
 
   return (

@@ -1,18 +1,20 @@
 import { View, Text ,StatusBar} from 'react-native'
 import React, { useContext } from 'react';
-import StudentHome from '../Screens/Student/StudentHome';
-import WardenHome from '../Screens/Warden/WardenHome';
 import { AuthContext } from '../context/Authcontext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import StudentStack from './StudentStack';
+import WardenStack from './WardenStack';
 
 const AppStack = () => {
-  const {userData} = useContext(AuthContext)
-  const stack = createNativeStackNavigator()
-  console.log(userData.userType)
+  // const {userData} = useContext(AuthContext)
+  // const stack = createNativeStackNavigator()
+  // console.log(userData.userType)
+
+  let userType = 'Student';
   return (
-    <View>
-      <Text>AppStack</Text>
-    </View>
+    userType === 'Student' ? 
+    (<StudentStack/>):(<WardenStack/>)
+    
   ) 
 }
 

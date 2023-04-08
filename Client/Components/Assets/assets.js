@@ -5,6 +5,13 @@ const IMAGES={
     RegisterIcon:require("../../assets/images/RegisterIcon.png"),
     NextIcon:require("../../assets/images/next.png"),
     BackIcon:require("../../assets/images/back.png"),
+    MenuIcon:require('../../assets/images/MenuIcon.png'),
+    ServiceIcon:require('../../assets/images/ServiceIcon.png'),
+    OutPassBtn:require('../../assets/images/OutpassBtn.png'),
+    LeaveBtn:require('../../assets/images/LeaveBtn.png'),
+    WardenIcon:require('../../assets/images/WardenLogo.png'),
+    CallIcon:require('../../assets/images/Call-Icon.png'),
+    WhatsappIcon:require('../../assets/images/Whatsapp-Icon.png'),
 }
 
 const FONTS={
