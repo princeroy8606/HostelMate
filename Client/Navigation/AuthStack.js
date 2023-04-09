@@ -7,18 +7,18 @@ import Register from '../Screens/Auth/HostelRegister/Register';
 import Password from '../Screens/Auth/Login/Password';
 
 const AuthStack = () => {
-    const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator()
   return (
-   <Stack.Navigator
-   screenOptions={{
-       headerShown:false
-   }} 
-   >
-    <Stack.Screen name='AuthOption' component={Auth}/>
-    <Stack.Screen name='Login' component={Login}/>
-    <Stack.Screen name='Register' component={Register}/>  
-    <Stack.Screen name='SetPassword' component={Password}/>  
-   </Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <Stack.Screen name='AuthOption' component={Auth} />
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Register' component={Register} />
+      <Stack.Screen name='SetPassword' component={Password} />
+    </Stack.Navigator>
   )
 }
 

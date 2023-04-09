@@ -17,7 +17,7 @@ const handleHisory = ()=>{
 
   return (
     <ImageBackground style={[Style.homeConatiner]} source={assets.IMAGES.bg1}>
-      <StatusBar />
+      <StatusBar/>
       <View style={[Style.TopContent,{alignItems:"center"}]}>
         <View style={[Style.complaintTop]}>
           <TouchableOpacity style={Style.history} activeOpacity={0.8} onPress={handleHisory}>

@@ -3,19 +3,28 @@ import React from 'react'
 import Style from './Style'
 import assets from '../../Components/Assets/assets';
 import { useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { SharedElement } from 'react-navigation-shared-element';
 
 const StudentHome = () => {
   const isFocused = useIsFocused()
-  console.log(isFocused)
+  const navigation = useNavigation()
+  let image ='abc'
   return (
     // <View style={Style.homeConatiner}>
       <ImageBackground style={[Style.homeConatiner,{height:"100%"}]} source={assets.IMAGES.bg1} resizeMethod="scale" resizeMode='cover'>
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>
-          <TouchableOpacity style={Style.menuBtn} activeOpacity={0.8}>
+          <TouchableOpacity 
+           style={Style.menuBtn}
+           activeOpacity={0.8}
+           onPress={()=>navigation.navigate('menu',{image})}
+           >
             <Text style={Style.btnText}>Daily menu</Text>
-            <Image source={assets.IMAGES.MenuIcon} style={Style.btnImage}/>
+            <SharedElement style={Style.btnImage} id='image'>
+            <Image source={assets.IMAGES.MenuIcon} />
+            </SharedElement>
           </TouchableOpacity>
         </View>
         <View  style={Style.serviceContainer}>

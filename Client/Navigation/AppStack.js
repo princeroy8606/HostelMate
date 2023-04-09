@@ -1,4 +1,4 @@
-import { View, Text ,StatusBar} from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,10 +12,10 @@ const AppStack = () => {
 
   let userType = 'Student';
   return (
-    userType === 'Student' ? 
-    (<StudentStack/>):(<WardenStack/>)
-    
-  ) 
+    userType === 'Student' ?
+      (<StudentStack />) : (<WardenStack />)
+
+  )
 }
 
 export default AppStack

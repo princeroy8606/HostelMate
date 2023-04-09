@@ -1,6 +1,6 @@
 
 const express = require("express");
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 require('dotenv').config();
 
 const hostelRouter = require("./routers/hostel")
@@ -19,31 +19,31 @@ const authenticationRouter = require('./routers/Auth')
 
 const app = express();
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("The hostel management app api");
 });
 
 mongoose.connect(process.env.CONNECTION_URL)
-.then(()=>{
-    app.listen(3000,()=>{
-        console.log("got it")
-     })
-})
-.catch((err)=>{
-    console.log(err)
-})
+    .then(() => {
+        app.listen(3000, () => {
+            console.log("got it")
+        })
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 app.use(express.json());
 // 
-app.use("/hostel",hostelRouter)
-app.use("/warden",wardenRouter)
-app.use("/rooms",roomsRouter)
-app.use('/students',studentsRouter)
-app.use('/announcements',announcementsRouter)
-app.use('/outpass',outpassRouter)
-app.use('/leaves',leavesRouter)
-app.use('/menu',menuRouter)
-app.use('/feadback',feadbackRouter)
-app.use('/complaints',complaintRouter)
-app.use('/services',serviceRouter)
-app.use('/maintenances',maintananceRouter)
-app.use('/Auth',authenticationRouter)
+app.use("/hostel", hostelRouter)
+app.use("/warden", wardenRouter)
+app.use("/rooms", roomsRouter)
+app.use('/students', studentsRouter)
+app.use('/announcements', announcementsRouter)
+app.use('/outpass', outpassRouter)
+app.use('/leaves', leavesRouter)
+app.use('/menu', menuRouter)
+app.use('/feadback', feadbackRouter)
+app.use('/complaints', complaintRouter)
+app.use('/services', serviceRouter)
+app.use('/maintenances', maintananceRouter)
+app.use('/Auth', authenticationRouter)

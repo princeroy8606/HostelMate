@@ -9,15 +9,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const AuthNav = () => {
   // const {userData} = useContext(AuthContext)
-   let userData = true
+  let userData = true
 
 
   return (
-      <NavigationContainer>
-       {
-         !userData ? <AuthStack/> : <AppStack/> 
-       }
-      </NavigationContainer>
+    <NavigationContainer>
+      {
+        !userData ? <AuthStack /> : <AppStack />
+      }
+    </NavigationContainer>
   )
 }
 
