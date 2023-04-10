@@ -4,7 +4,6 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 import { enableScreens } from 'react-native-screens';
 import TabBar from '../Screens/Student/Components/TabBar';
 import SMenu from '../Screens/Student/SMenu';
-import assets from '../Components/Assets/assets';
 
 
 enableScreens()
@@ -20,6 +19,19 @@ const StudentStack = () => {
     >
       <Stack.Screen name='studentHome' component={TabBar} />
       <Stack.Screen name='menu' component={SMenu}
+        options={()=>({
+          transitionSpec:{
+              open:{animation:"spring" ,config:{duration:500}},
+              close:{animation:"spring" ,config:{duration:100}}
+          },
+          cardStyleInterpolator:({ current:{progress}})=>{
+            return{
+              cardStyle:{
+                opacity:progress,
+              }
+            }
+          },
+        })}
         sharedElements={() => {
           return ['image']
         }}

@@ -13,6 +13,7 @@ const StudentHome = () => {
   return (
     // <View style={Style.homeConatiner}>
       <ImageBackground style={[Style.homeConatiner,{height:"100%"}]} source={assets.IMAGES.bg1} resizeMethod="scale" resizeMode='cover'>
+        <StatusBar/>
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>

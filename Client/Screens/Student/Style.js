@@ -287,7 +287,6 @@ const Style = StyleSheet.create({
     menuList:{
         width: "100%",
         height: "88%",
-        backgroundColor:"green",
     }
 })
 
