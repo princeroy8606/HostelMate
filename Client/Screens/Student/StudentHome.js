@@ -13,9 +13,9 @@ const StudentHome = () => {
   let image ='abc'
   return (
       <ImageBackground style={[Style.homeConatiner,{height:"100%"}]} source={assets.IMAGES.bg1} resizeMethod="scale" resizeMode='cover'>
-        {/* {
+        {
           Platform.OS === 'android' ? (<StatusBar/>):(<SafeAreaView/>)
-        } */}
+        }
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>
@@ -44,11 +44,11 @@ const StudentHome = () => {
         <View style={Style.middleContainer}>
         <View style={Style.middleCover}>
           <View style={Style.middleTopBtnContainer}>
-            <TouchableOpacity style={Style.midlleTopBtn} activeOpacity={0.8}>
+            <TouchableOpacity style={Style.midlleTopBtn} activeOpacity={0.8} onPress={()=>navigation.navigate('Outpass')}>
               <Text style={[Style.btnText,{fontSize:20,alignSelf:"center"}]}>Outpass</Text>
               <Image source={assets.IMAGES.OutPassBtn} style={Style.btnImage}/>
             </TouchableOpacity>
-            <TouchableOpacity style={Style.midlleTopBtn} activeOpacity={0.8}>
+            <TouchableOpacity style={Style.midlleTopBtn} activeOpacity={0.8} onPress={()=>navigation.navigate('Leave')}>
               <Text style={[Style.btnText,{fontSize:20,alignSelf:"center"}]}>Leave</Text>
             <Image source={assets.IMAGES.LeaveBtn} style={Style.btnImage}/>
             </TouchableOpacity>

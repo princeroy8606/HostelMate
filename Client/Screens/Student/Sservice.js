@@ -3,14 +3,19 @@ import React, { useState } from 'react';
 import Style from './Style';
 import { SharedElement } from 'react-navigation-shared-element';
 import assets from '../../Components/Assets/assets';
-import TabBar from './Components/TabBar';
 
 const Sservice = () => {
+
+    let serviceData = {studentId:'',hostelId:'',serviceType:'',date:''}
     const [popUp, setpopUp] = useState(false)
     const [serviceType,setServiceType]=useState('')
     const handleSumbit = (type) => {
         setpopUp(true)
         setServiceType(type)
+    }
+
+    const handleConform = ()=>{
+        
     }
 
     return (
@@ -31,13 +36,13 @@ const Sservice = () => {
                                 <Button title='cancel' onPress={()=>setpopUp(false)} />
                             </View>
                             <View>
-                                <Button title='confrom' />
+                                <Button title='confrom' onPress={handleConform} />
                             </View>
                         </View>
                     </View> : ''
                 }
                 <Image source={assets.IMAGES.serviceBg} style={{ position: "absolute", bottom: 0 }} />
-                <View style={[Style.menuList, { height: "100%", alignItems: "center", marginTop: 20 ,opacity:0.2}]}>
+                <View style={[Style.menuList, { height: "100%", alignItems: "center", marginTop: 20 }]}>
                     <TouchableOpacity style={Style.serviceItem} activeOpacity={0.8} onPress={() => handleSumbit('Cleaning')}>
                         <Image source={assets.IMAGES.cleaning} />
                         <Text style={{ fontSize: 30, fontWeight: 500 }}> Room Cleaning</Text>

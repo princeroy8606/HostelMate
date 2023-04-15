@@ -5,6 +5,8 @@ import { enableScreens } from 'react-native-screens';
 import TabBar from '../Screens/Student/Components/TabBar';
 import SMenu from '../Screens/Student/SMenu';
 import Sservice from '../Screens/Student/Sservice';
+import Soutpass from '../Screens/Student/Soutpass';
+import Sleave from '../Screens/Student/Sleave';
 
 
 enableScreens()
@@ -54,7 +56,9 @@ const StudentStack = () => {
         sharedElements={() => {
           return ['service']
         }}
-      />
+      />r
+      <Stack.Screen name='Outpass' component={Soutpass} />
+      <Stack.Screen name='Leave' component={Sleave} />
     </Stack.Navigator>
   )
 }

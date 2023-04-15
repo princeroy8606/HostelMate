@@ -195,7 +195,8 @@ const Style = StyleSheet.create({
         borderRadius: 15,
         borderColor: "black",
         borderWidth: 2,
-        padding: 10
+        padding: 10,
+        fontSize:20
     },
     profileHeader: {
         width: "100%",
@@ -296,10 +297,43 @@ const Style = StyleSheet.create({
         borderRadius: 40, 
         alignItems: "center", 
         justifyContent: "space-around",
-        shadowColor: "black", 
         flexDirection: "row",
+        shadowColor: "black", 
         elevation: 20,
         padding:20
+    },
+    OPreasonContainer:{
+        width:"100%",
+        height:"40%",
+        padding:40
+    },
+    OPbottom:{
+        width: "100%",
+        height:800,
+        // backgroundColor: "red",
+        marginTop: 20,
+    },
+    shortInput:{
+        width:150,
+        height:40,
+        borderRadius:10, 
+        backgroundColor:"#D9D9D9",
+        borderColor: "black",
+        borderWidth:1,
+        padding:5,
+        fontSize:20,
+        textAlign:"center"
+    },
+    requestBtn:{
+        width:140,
+        height:40,
+        borderRadius:20,
+        backgroundColor:"red",
+        flexDirection:"row" ,
+        justifyContent:"space-around",
+        alignItems:"center",
+        shadowColor: "black", 
+        elevation: 20,
     }
 })
 

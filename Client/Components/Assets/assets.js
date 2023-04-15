@@ -17,6 +17,7 @@ const IMAGES = {
     laundry: require('../../assets/images/laundry.png'),
     maintenance: require('../../assets/images/maintanace.png'),
     serviceBg: require('../../assets/images/serviceBg.png'),
+    sendIcon: require('../../assets/images/send.png'),
 }
 
 const FONTS = {

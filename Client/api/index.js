@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: "http://172.20.10.4:3000" })
+const API = axios.create({ baseURL: "http://192.168.43.165:3000" })
 
 export const validateHostel = (hostelId) => API.get(`/Auth/${hostelId.hostelId}`)
 export const verifyEmail = (maildata) => API.post('/Auth/email', maildata)

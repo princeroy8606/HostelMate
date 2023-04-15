@@ -47,6 +47,12 @@ const SMenu = () => {
         })
     }, [index])
 
+    const getItemLayout = useCallback((_, index) => ({
+        length: 75, // The height of each item in the list
+        offset: 75 * index,
+        index,
+      }), []);
+
     return (
         <View style={[Style.homeConatiner]}>
             <StatusBar />
@@ -62,6 +68,7 @@ const SMenu = () => {
                         ref={ref}
                         showsHorizontalScrollIndicator={false}
                         initialScrollIndex={0}
+                        getItemLayout={getItemLayout}
                         contentContainerStyle={{
                             justifyContent: "space-around", flexDirection: "row", justifyContent: "center",
                             alignItems: "center",

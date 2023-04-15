@@ -19,7 +19,7 @@ exports.getAllServices = async (req, res) => {
 
 //add new Services
 exports.addNewServices = async (req, res) => {
-    const studentId = req.params.id;
+    const studentId = req.body.studentId;
     const student = await Students.findById(studentId)
     const hostelid = req.body.hostelId
     const hostel = await Hostel.findOne({ hostelId: hostelid })
