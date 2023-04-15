@@ -1,4 +1,4 @@
-import { StatusBar, Text, View, Dimensions, StyleSheet, Platform } from 'react-native';
+import { StatusBar, Text, View, Dimensions, StyleSheet, Platform,SafeAreaView } from 'react-native';
 import AuthNav from './Navigation/AuthNav';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose } from 'redux';

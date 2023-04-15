@@ -9,6 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated from 'react-native-reanimated';
+import { Platform } from 'react-native';
 
 
 const Tab = createBottomTabNavigator()
@@ -39,7 +40,8 @@ const TabBar = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
-        tabBarStyle: { backgroundColor: "#B1A7A6", height: 75, borderRadius: 70, width: "85%", position: "absolute", left: 30, bottom: 18 },
+        tabBarStyle: { backgroundColor: "#B1A7A6", height: 75, borderRadius: 70, width: "85%", position: "absolute", left: 30, 
+        bottom: 0 },
       }}
     >
       {

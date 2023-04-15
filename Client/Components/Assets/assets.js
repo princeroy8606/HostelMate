@@ -13,6 +13,10 @@ const IMAGES = {
     CallIcon: require('../../assets/images/Call-Icon.png'),
     WhatsappIcon: require('../../assets/images/Whatsapp-Icon.png'),
     ProfileIcon: require('../../assets/images/ProfileIcon.png'),
+    cleaning: require('../../assets/images/cleaning.png'),
+    laundry: require('../../assets/images/laundry.png'),
+    maintenance: require('../../assets/images/maintanace.png'),
+    serviceBg: require('../../assets/images/serviceBg.png'),
 }
 
 const FONTS = {

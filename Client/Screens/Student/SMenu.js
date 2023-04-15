@@ -30,13 +30,11 @@ const SMenu = () => {
             </TouchableOpacity>
         </View>
     )
-
     const setRaiting = (item) => {
         console.log(item)
         if (index < item - 1)
             setColor("yellow")
     }
-
     const handleDate = (date) => {
         index === 0 ?
             setIndex(parseInt(day - 1)) : setIndex(date - 1)
@@ -48,8 +46,6 @@ const SMenu = () => {
             viewPosition: 0.5,
         })
     }, [index])
-
-
 
     return (
         <View style={[Style.homeConatiner]}>

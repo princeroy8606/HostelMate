@@ -1,19 +1,21 @@
-import { View, Text, ImageBackground,Image ,TouchableOpacity,StatusBar} from 'react-native'
+import { View, Text, ImageBackground,Image ,TouchableOpacity,StatusBar,Platform} from 'react-native'
 import React from 'react'
 import Style from './Style'
 import assets from '../../Components/Assets/assets';
 import { useIsFocused } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import { SharedElement } from 'react-navigation-shared-element';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const StudentHome = () => {
   const isFocused = useIsFocused()
   const navigation = useNavigation()
   let image ='abc'
   return (
-    // <View style={Style.homeConatiner}>
       <ImageBackground style={[Style.homeConatiner,{height:"100%"}]} source={assets.IMAGES.bg1} resizeMethod="scale" resizeMode='cover'>
-        <StatusBar/>
+        {/* {
+          Platform.OS === 'android' ? (<StatusBar/>):(<SafeAreaView/>)
+        } */}
       <View style={Style.TopContent}>
        <View style={Style.menuServiceConatiiner}>
         <View style={Style.menuContainer}>
@@ -29,8 +31,12 @@ const StudentHome = () => {
           </TouchableOpacity>
         </View>
         <View  style={Style.serviceContainer}>
-        <TouchableOpacity style={Style.serviceBtn} activeOpacity={0.8}>
-            <Image source={assets.IMAGES.ServiceIcon} style={Style.btnImage}/>
+        <TouchableOpacity style={Style.serviceBtn} activeOpacity={0.8}
+        onPress={()=>navigation.navigate('service')}
+        >
+        <SharedElement style={Style.btnImage} id='service'>
+            <Image source={assets.IMAGES.ServiceIcon} />
+          </SharedElement>
             <Text style={Style.btnText}>Services</Text>
           </TouchableOpacity>
         </View>
@@ -69,7 +75,6 @@ const StudentHome = () => {
       </View>
     </View>
     </ImageBackground>
-    // </View>
     
   )
 }

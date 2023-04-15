@@ -269,7 +269,7 @@ const Style = StyleSheet.create({
         height: "80%",
         // backgroundColor: "red",
         marginTop: 20,
-        justifyContent:"space-between"
+        justifyContent: "space-between"
     },
     dateContainer: {
         width: "100%",
@@ -284,9 +284,22 @@ const Style = StyleSheet.create({
         flexDirection: "row",
         // backgroundColor:"yellow",
     },
-    menuList:{
+    menuList: {
         width: "100%",
         height: "88%",
+    },
+    serviceItem: {
+        width: 380, 
+        height: 140,
+         backgroundColor: '#CACACA', 
+         marginBottom: 25,
+        borderRadius: 40, 
+        alignItems: "center", 
+        justifyContent: "space-around",
+        shadowColor: "black", 
+        flexDirection: "row",
+        elevation: 20,
+        padding:20
     }
 })
 

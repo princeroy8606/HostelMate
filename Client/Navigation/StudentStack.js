@@ -4,6 +4,7 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 import { enableScreens } from 'react-native-screens';
 import TabBar from '../Screens/Student/Components/TabBar';
 import SMenu from '../Screens/Student/SMenu';
+import Sservice from '../Screens/Student/Sservice';
 
 
 enableScreens()
@@ -34,6 +35,24 @@ const StudentStack = () => {
         })}
         sharedElements={() => {
           return ['image']
+        }}
+      />
+      <Stack.Screen name='service' component={Sservice}
+        options={()=>({
+          transitionSpec:{
+              open:{animation:"spring" ,config:{duration:500}},
+              close:{animation:"spring" ,config:{duration:100}}
+          },
+          cardStyleInterpolator:({ current:{progress}})=>{
+            return{
+              cardStyle:{
+                opacity:progress,
+              }
+            }
+          },
+        })}
+        sharedElements={() => {
+          return ['service']
         }}
       />
     </Stack.Navigator>

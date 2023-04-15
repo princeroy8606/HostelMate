@@ -15,6 +15,8 @@ export const AuthProvider = ({children})=>{
     const isLogedIn = async() =>{
         try{
             const userToken = await AsyncStorage.getItem('UserToken')
+            console.dir(userToken)
+            // const userToken = JSON.parse(user)
             if(userData !== null ) setUserData(userToken)
         }catch(err){
             console.log(err)
